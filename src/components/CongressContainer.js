@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Member from './Member';
+import SearchField from './SearchField';
 
 class CongressContainer extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        members: []
+        members: [],
+        filterText: ''
       }
+
+      this.handleTextChange = this.handleTextChange.bind(this);
+    }
+
+    handleTextChange(filterText) {
+      this.setState({
+        filterText: filterText
+      });
     }
 
     componentDidMount() {
         var config = {
-          headers: {'X-API-Key': 'qUyohoRl3kQ9BhvjxNcuJ4gd6Xaz6R8GmvEdtxjU'}
+          headers: {'X-API-Key': process.env.REACT_APP_API_KEY}
         };
         axios.get('https://api.propublica.org/congress/v1/115/senate/members.json', config)
       .then(response => {
@@ -25,6 +35,9 @@ class CongressContainer extends Component {
   render() {
     return (
         <div>
+        <SearchField
+          filterText={this.state.filterText}
+          onFilterTextChange={this.handleTextChange} />
         {this.state.members.map((member) => {
             return (<Member member={member} key={member.id} />)
         })};
