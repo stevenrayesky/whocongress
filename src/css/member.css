@@ -1,0 +1,14 @@
+.tile {
+    background-color: #efefef;
+    border-radius: 5px;
+}
+
+.tile__info {
+    max-height: 0px;
+    transition: all 2.5s;
+    overflow: hidden;
+}
+
+.tile.active .tile__info {
+    max-height: 250px;
+}
