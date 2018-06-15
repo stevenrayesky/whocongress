@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 class SearchField extends Component {
   constructor(props){
       super(props);
-      this.handleTextChange = this.handleTextChange.bind(this);
+      this.fieldTextChange = this.fieldTextChange.bind(this);
   }
 
-  handleTextChange(e){
+  fieldTextChange(e){
       this.props.onFilterTextChange(e.target.value);
   }
 
@@ -18,7 +18,7 @@ class SearchField extends Component {
                 type="text"
                 value={filterText}
                 name="name"
-                onChange={this.handleTextChange} />
+                onChange={this.fieldTextChange} />
             <input type="submit" name="submit" />
           </div>
       )

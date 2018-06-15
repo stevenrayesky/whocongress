@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CongressContainer from './components/CongressContainer'
+import Congress from './components/Congress'
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
         <header className="header">
         <h1>Who Congress</h1>
         </header>
-        <CongressContainer />
+        <Congress />
       </div>
     );
   }
